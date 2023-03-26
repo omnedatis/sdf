@@ -1,0 +1,53 @@
+.App {
+  text-align: center;
+}
+
+.convas {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  --bw:5vw;
+  --bh:15vh;
+  background-color: #1e1e1e;
+}
+
+.header{
+  height: 7vh;
+  width: 100vw;
+  background-color: #323233;
+}
+
+.second-left.side-col {
+  width: calc(3 * var(--bw));
+  left: var(--bw);
+  transition: left 1s, width 1s;
+}
+
+.side-col {
+  position: absolute;
+  display: flex; 
+  flex-direction: column;
+  width: var(--bw);
+  height: 75vh;
+  background-color: #333333;
+  left:0;
+  z-index: 0;
+  transition: left 1s, width 1s;
+}
+
+.front {
+  z-index: 2;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  width: var(--bw);
+  height: var(--bw);
+  color:#858585;
+  flex-shrink: 0;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
