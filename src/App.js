@@ -6,35 +6,33 @@ import layerNames from './data/layerNames.json'
 function App() {
 
   //
-  const [secondButtonPos, setSecondButtonPos] = useState(0)
-  const [secondMenuPos, setSecondMenuPos] = useState(['side-col'])
-  const fristColHandleOnClick = function (e) {
+  const [secondButtonPos, setSecondButtonPos] = useState(0);
+  const [secondMenuPos, setSecondMenuPos] = useState(['side-col']);
+  const firstColHandleOnClick = function (e) {
 
     if (secondMenuPos.length === 1) {
-      setSecondMenuPos(['side-col', 'second-left'])
-      setSecondButtonPos(e)
+      setSecondMenuPos(['side-col', 'second-left']);
+      setSecondButtonPos(e);
     }
     if (secondMenuPos.length === 2) {
-      setSecondMenuPos(['side-col'])
+      setSecondMenuPos(['side-col']);
 
     }
   }
   // first menu
-  const firstMenuItems = [
-  ];
+  const firstMenuItems = [];
   for (const each in layerNames) {
-    firstMenuItems.push(each)
+    firstMenuItems.push(each);
   }
   const firstMenu = [];
   for (const [idx, each] of firstMenuItems.entries()) {
-    firstMenu.push(<button key={`${idx}_menu`} onClick={() => { fristColHandleOnClick(idx) }}>
+    firstMenu.push(<button key={`${idx}_menu`} onClick={() => { firstColHandleOnClick(idx) }}>
       {each}
     </button>)
   };
   //second menu
   const secondMemu = [];
-  let cnt = 0
-  console.log()
+  let cnt = 0;
   for (const each in layerNames) {
     if (cnt === secondButtonPos) {
       for (const [idx, item] of layerNames[each].entries()) {
@@ -48,7 +46,6 @@ function App() {
     }
     cnt += 1
   }
-  console.log(secondMemu)
   return (
     <div className="App">
       <div className="convas">
@@ -69,6 +66,9 @@ function App() {
               "justify-content": "space-around"
             }} >
             {secondMemu}
+          </div>
+          <div className='pane'>
+
           </div>
         </div>
       </div>

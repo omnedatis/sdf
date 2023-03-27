@@ -41,6 +41,12 @@
   z-index: 2;
 }
 
+.pane {
+  width: calc(100vw - var(--bw));
+  height: calc(100vh - var(--hh));
+  background-color: #858585;
+}
+
 button {
   all: unset;
   cursor: pointer;
