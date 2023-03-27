@@ -1,46 +1,50 @@
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AddIcCallIcon from '@mui/icons-material/AddIcCall';
-import AlarmOnIcon from '@mui/icons-material/AlarmOn';
-import AodIcon from '@mui/icons-material/Aod';
-import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
-import BedroomChildIcon from '@mui/icons-material/BedroomChild';
-import Brightness2Icon from '@mui/icons-material/Brightness2';
-import CampaignIcon from '@mui/icons-material/Campaign';
-import CenterFocusWeakIcon from '@mui/icons-material/CenterFocusWeak';
-
 import { useState } from 'react';
 import './App.css';
-
+import layerNames from './data/layerNames.json'
 
 
 function App() {
 
   //
+  const [secondButtonPos, setSecondButtonPos] = useState(0)
   const [secondMenuPos, setSecondMenuPos] = useState(['side-col'])
   const fristColHandleOnClick = function (e) {
+    setSecondButtonPos(e)
     if (secondMenuPos.length === 1) {
       setSecondMenuPos(['side-col', 'second-left'])
+      
     }
     if (secondMenuPos.length === 2) {
       setSecondMenuPos(['side-col'])
+      
     }
-  }
-  const itemHandleOnClick = function () {
-
   }
   // first menu
   const firstMenuItems = [
-    <div>基金</div>, <div>投組</div>, <AlarmOnIcon />, <div>AI SQS</div>, <AssuredWorkloadIcon />,
-    <BedroomChildIcon />, <Brightness2Icon />, <CampaignIcon />, <CenterFocusWeakIcon />,
-    <AodIcon />, <AccessTimeIcon />, <AddIcCallIcon />
-  ]
-  const firstMenu = []
+  ];
+  for (const each in layerNames) {
+    firstMenuItems.push(each)
+  }
+  const firstMenu = [];
   for (const [idx, each] of firstMenuItems.entries()) {
-    firstMenu.push(<button key={`${idx}_menu`} onClick={fristColHandleOnClick}>
+    firstMenu.push(<button key={`${idx}_menu`} onClick={()=>{fristColHandleOnClick(idx)}}>
       {each}
     </button>)
-  }
+  };
   //second menu
+  const secondMemu = [];
+  let cnt = 0
+  console.log()
+  for (const each in layerNames){
+      if (cnt === secondButtonPos) {
+        for (const [idx, item] of layerNames[each].entries()) {
+          secondMemu.push(<div key={`${idx}_smenu`} style={{"color":"#ffffff"}}>{item}</div>)
+        }
+        break
+      }
+      cnt +=1
+  }
+  console.log(secondMemu)
   return (
     <div className="App">
       <div className="convas">
@@ -57,13 +61,13 @@ function App() {
           <div className={secondMenuPos.join(' ')} style={
             {
             "backgroundColor":"#252526",
-            "height":"calc(100vh - var(--hh)"}} >
+            "height":"calc(100vh - var(--hh)",
+            "justify-content":"space-around"}} >
+              {secondMemu}
             <div>
-
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
