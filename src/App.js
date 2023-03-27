@@ -48,13 +48,16 @@ function App() {
 
         </div>
         <div>
-          <div className='side-col' style={{"height":"100vh", "zIndex":"1"}}>
+          <div className='side-col' style={{"height":"calc(100vh - var(--hh)", "zIndex":"1"}}>
             
           </div>
           <div className='side-col front' style={{"overflowY": "scroll" }}>
             {firstMenu}
           </div>
-          <div className={secondMenuPos.join(' ')} style={{"backgroundColor":"#252526", "height":"100vh"}} >
+          <div className={secondMenuPos.join(' ')} style={
+            {
+            "backgroundColor":"#252526",
+            "height":"calc(100vh - var(--hh)"}} >
             <div>
 
             </div>
